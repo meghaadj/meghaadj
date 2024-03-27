@@ -1,0 +1,12 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY ./react-app/package*.json /app
+RUN npm install
+
+COPY ./react-app /app
+COPY ./form-components /app/src/form-components
+COPY ./standard-components /app/src/standard-components
+
+CMD ["npm", "start"]

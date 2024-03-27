@@ -1,0 +1,21 @@
+# Copy following dependencies to your react app's package.json
+
+"@emotion/react": "^11.11.1",
+"@emotion/styled": "^11.11.0",
+"@mui/base": "^5.0.0-beta.25",
+"@mui/icons-material": "^5.14.19",
+"@mui/material": "^5.14.19",
+"@mui/x-date-pickers": "^6.18.2",
+"@testing-library/jest-dom": "^6.1.5",
+"@testing-library/react": "^14.1.2",
+"axios": "^1.6.2",
+"crypto-js": "^4.2.0",
+"dayjs": "^1.11.10",
+"dompurify": "^3.0.6",
+"jodit-react": "^1.3.39",
+"react": "^18.2.0",
+"react-dom": "^18.2.0",
+"react-dropzone": "^14.2.3",
+"react-router-dom": "^6.20.1",
+"react-scripts": "5.0.1",
+"react-toastify": "^9.1.3"

@@ -1,0 +1,57 @@
+version: "3"
+services:
+  db:
+    build:
+      context: ./packages/db-loader
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 27017:27017
+    networks:
+      - app-network
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=task
+
+  forms:
+    build:
+      context: "./packages/forms"
+      dockerfile: Dockerfile.dev
+    ports:
+      - 4000:4000
+    networks:
+      - app-network
+    environment:
+      - ENV=LOCAL
+      - PORT=4000
+      - MONGO_URL=mongodb://admin:password@db:27017
+    volumes:
+      - ./packages/forms:/app
+      - /app/node_modules
+    depends_on:
+      - db
+
+  react-app:
+    build:
+      context: "./packages"
+      dockerfile: ./react-app/Dockerfile.dev
+    ports:
+      - 3004:3004
+    networks:
+      - app-network
+    environment:
+      - WATCHPACK_POLLING=true # needed so code changes are reflected live
+      - REACT_APP_FORMS_URL=http://localhost:4000
+      - PORT=3004
+    volumes:
+      - ./packages/react-app:/app
+      - ./packages/form-components:/app/src/form-components
+      - ./packages/standard-components:/app/src/standard-components
+      - /app/node_modules
+    depends_on:
+      - forms
+
+networks:
+  app-network:
+    driver: bridge
