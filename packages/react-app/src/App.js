@@ -1,16 +1,10 @@
-import {
-  Box,
-  Grid,
-  TableBody,
-  TableCell,
-  TableRow,
-  Typography,
-} from "@mui/material";
+import { Box } from "@mui/material";
 import { observer } from "mobx-react";
 import { PaginationTable, TableHeaders } from "standard-components";
 import { UserTableBody } from "components/tables/customer";
 import { getFormUrl } from "utils/urls";
 import { PageTitle } from "standard-components";
+import UserForm from "components/forms/UserForm";
 
 const App = () => {
   return (
@@ -33,13 +27,9 @@ const UserTable = () => {
   ];
 
   return (
-    <PaginationTable
-      apiUrl={apiUrl}
-      queryParams={{}}
-      tableHeadersRenderer={() => <TableHeaders headers={headers} />}
-      tableBodyRenderer={(data) => <UserTableBody data={data} />}
-      title="Users"
-    />
+    <Box>
+      <UserForm />
+    </Box>
   );
 };
 

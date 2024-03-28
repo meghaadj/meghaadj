@@ -3,19 +3,14 @@ import { observer } from "mobx-react";
 import {
   Box,
   Icon,
-  IconButton,
   Pagination,
   Paper,
-  Stack,
   Table,
   TableContainer,
-  Typography,
 } from "@mui/material";
+import axios from "axios";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 
-import { axios } from "standard-components/services";
-import { downloadcsv } from "standard-components/utils/downloadcsv.js";
-import { authStore } from "stores";
 import LinkButton from "./LinkButton";
 
 const PaginationTable = (props) => {
@@ -29,12 +24,12 @@ const PaginationTable = (props) => {
     titleIcon = <Icon />,
     pagination = true,
     queryParams,
-    styles
+    styles,
   } = props;
-  const bgColor = styles?.backgroundColor || '#2a72ba';
-  const border = styles?.border || 'none';
-  const color = styles?.color || '#ffffff';
-  const linkColor = styles?.linkColor || '#0000EE';
+  const bgColor = styles?.backgroundColor || "#2a72ba";
+  const border = styles?.border || "none";
+  const color = styles?.color || "#ffffff";
+  const linkColor = styles?.linkColor || "#0000EE";
 
   const [data, setData] = useState([]);
   const [dataLength, setDataLength] = useState(0);
@@ -42,8 +37,6 @@ const PaginationTable = (props) => {
   const numPages = Math.ceil(dataLength / 10);
 
   useEffect(() => {
-    if (!authStore.token) return;
-
     const fetchData = async () => {
       try {
         const params = { ...queryParams };
@@ -58,7 +51,7 @@ const PaginationTable = (props) => {
         setData(submissions);
         setDataLength(count);
       } catch (error) {
-        console.log("Error fetching reports:", error);
+        console.log("Error fetching data:", error);
       }
     };
 
@@ -87,16 +80,13 @@ const PaginationTable = (props) => {
     },
   };
 
-  const handleExport = async () => {
-    const { name, url, formId } = download;
-    return downloadcsv(url, formId, name, queryParams, authStore.token);
-  };
-
   return (
-    <Box sx={{
-      border: border,
-    }}>
-      <Box
+    <Box
+      sx={{
+        border: border,
+      }}
+    >
+      {/* <Box
         sx={{
           display: "flex",
           backgroundColor: bgColor,
@@ -109,7 +99,7 @@ const PaginationTable = (props) => {
           direction="row"
           sx={{
             width: "100%",
-            fontSize:"1.1rem",
+            fontSize: "1.1rem",
           }}
         >
           {titleIcon}
@@ -124,7 +114,7 @@ const PaginationTable = (props) => {
             </IconButton>
           )}
         </Stack>
-      </Box>
+      </Box> */}
 
       <TableContainer component={Paper}>
         <Box sx={{ padding: 1 }}>

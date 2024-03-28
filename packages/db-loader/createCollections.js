@@ -3,3 +3,5 @@
 // This file is mainly used to document the collections that are in use in the db.
 
 db.createCollection("submissions");
+db.createCollection("users");
+db.createCollection("forms");

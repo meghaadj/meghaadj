@@ -50,7 +50,7 @@ const getAllSubmissionsById = async (req, res) => {
     delete query.sort;
 
     for (const key in sort) {
-      if (typeof sort[key] === 'string') {
+      if (typeof sort[key] === "string") {
         sort[key] = parseInt(sort[key]);
       }
     }
@@ -72,8 +72,9 @@ const getAllSubmissionsById = async (req, res) => {
         .json({ message: "Success", count: 0, submissions: [] });
     }
 
-    const count =
-      await req.backend.models[collectionName].countDocuments(query);
+    const count = await req.backend.models[collectionName].countDocuments(
+      query
+    );
     const submissions = await req.backend.models[collectionName]
       .find(query)
       .select(selectFields)

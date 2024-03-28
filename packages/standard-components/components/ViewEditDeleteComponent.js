@@ -3,9 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { observer } from "mobx-react";
 import { Box, Divider, Tab, Tabs, Typography } from "@mui/material";
 import { useForm } from "form-components";
-import { axios } from "../services";
+import axios from "axios";
 
-import { authStore } from "stores";
 import ConfirmButton from "./ConfirmButtonComponent";
 
 const ViewEditDeleteComponent = (props) => {
@@ -27,7 +26,7 @@ const ViewEditDeleteComponent = (props) => {
         const result = await axios.get(`${formUrl}/submission/${id}`);
         setSubmission(result.data.submission);
       } catch (error) {
-        console.log(error)
+        console.log(error);
         navigator(parentUrl);
       }
     };
@@ -38,14 +37,10 @@ const ViewEditDeleteComponent = (props) => {
     };
   }, [id, formUrl, navigator, parentUrl, value]);
 
-  const form = useForm(
-    formUrl,
-    {
-      submission: submission,
-      viewOnly: value === "view" ? true : false,
-    },
-    authStore.token,
-  );
+  const form = useForm(formUrl, {
+    submission: submission,
+    viewOnly: value === "view" ? true : false,
+  });
 
   const handleChange = (_event, value) => {
     setValue(value);

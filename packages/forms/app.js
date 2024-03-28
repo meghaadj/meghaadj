@@ -24,7 +24,7 @@ app.use(
     extended: true,
     limit: "50mb",
     parameterLimit: 50000,
-  }),
+  })
 );
 
 const corsOptions = {
@@ -65,10 +65,14 @@ app.use((_req, res, next) => {
   res.header("Access-Control-Allow-Methods", "POST, PUT, OPTIONS");
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin,Strict-Transport-Security,X-XSS-Protection,X-Content-Type-Options,Referrer-Policy,X-Requested-With,X-Frame-Options,Content-Type,Accept,cache-control,Access-Control-Allow-Origin,Access-Control-Allow-Methods,Content-Security-Policy",
+    "Origin,Strict-Transport-Security,X-XSS-Protection,X-Content-Type-Options,Referrer-Policy,X-Requested-With,X-Frame-Options,Content-Type,Accept,cache-control,Access-Control-Allow-Origin,Access-Control-Allow-Methods,Content-Security-Policy"
   );
 
-  const csp = `base-uri 'self'; connect-src 'self' data: ${config.disableLocalhost ? "" : "http://localhost"} https://iwsaustralia.com.au https://integratedhr.com.au; default-src 'self' 'unsafe-eval'; font-src 'self'; frame-src 'self'; img-src 'self' data: ${config.disableLocalhost ? "" : "http://localhost"}; manifest-src 'self'; media-src 'self'; object-src 'none'; script-src 'self' 'unsafe-eval';`;
+  const csp = `base-uri 'self'; connect-src 'self' data: ${
+    config.disableLocalhost ? "" : "http://localhost"
+  } https://iwsaustralia.com.au https://integratedhr.com.au; default-src 'self' 'unsafe-eval'; font-src 'self'; frame-src 'self'; img-src 'self' data: ${
+    config.disableLocalhost ? "" : "http://localhost"
+  }; manifest-src 'self'; media-src 'self'; object-src 'none'; script-src 'self' 'unsafe-eval';`;
 
   res.header("Content-Security-Policy", csp);
 

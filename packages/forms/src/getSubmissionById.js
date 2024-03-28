@@ -38,7 +38,7 @@ const getSubmissionById = async (req, res) => {
       {
         auditTrail: updatedAuditTrailsEntry,
       },
-      { new: true },
+      { new: true }
     );
 
     return res

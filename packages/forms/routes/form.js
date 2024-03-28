@@ -1,7 +1,5 @@
 import express from "express";
 
-import { authenticateToken } from "../middlewares/index.js";
-
 import {
   getFormById,
   getAllSubmissionsById,
@@ -14,32 +12,32 @@ import {
 const router = express.Router();
 
 // returns json of a form
-router.get("/:id", authenticateToken, async (req, res) => {
+router.get("/:id", async (req, res) => {
   getFormById(req, res);
 });
 
 // get all submissions form a form
-router.get("/:id/submissions", authenticateToken, async (req, res) => {
+router.get("/:id/submissions", async (req, res) => {
   getAllSubmissionsById(req, res);
 });
 
 // get a submission
-router.get("/:id/submission/:sub", authenticateToken, async (req, res) => {
+router.get("/:id/submission/:sub", async (req, res) => {
   getSubmissionById(req, res);
 });
 
 // edit a submission
-router.put("/:id/submission/:sub", authenticateToken, async (req, res) => {
+router.put("/:id/submission/:sub", async (req, res) => {
   editSubmissionById(req, res);
 });
 
 // delete a submission
-router.delete("/:id/submission/:sub", authenticateToken, async (req, res) => {
+router.delete("/:id/submission/:sub", async (req, res) => {
   deleteSubmissionById(req, res);
 });
 
 // create a submission
-router.post("/:id", authenticateToken, async (req, res) => {
+router.post("/:id", async (req, res) => {
   createSubmissionById(req, res);
 });
 
