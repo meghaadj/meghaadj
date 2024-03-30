@@ -16,9 +16,6 @@ const createSubmissionById = async (req, res) => {
   }
 
   const user = req.user || {};
-  if (!hasAccess(form, user, "create_own")) {
-    return res.status(401).json({ error: "Unauthorized" });
-  }
   const now = new Date();
   //TODO perform validation check
   const formStatus = await isValidSubmission(req, form, req.body.data);
@@ -59,8 +56,8 @@ const createSubmissionById = async (req, res) => {
 
   actions.forEach(async (action) => {
     try {
-      const parsedUrl = new URL('/iws' + action.path, config.runnerUrl);
- 
+      const parsedUrl = new URL("/iws" + action.path, config.runnerUrl);
+
       const url = parsedUrl.toString();
 
       await axios.post(url, sub, {
