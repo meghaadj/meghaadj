@@ -2,7 +2,7 @@ const validateFormFields = (
   components,
   data,
   newErrors,
-  specialCharsWhitelist,
+  specialCharsWhitelist
 ) => {
   for (const component of components) {
     calculateError(component, data, newErrors, specialCharsWhitelist);
@@ -13,7 +13,7 @@ const calculateError = (
   component,
   data,
   newErrors,
-  specialCharsWhitelist = "",
+  specialCharsWhitelist = ""
 ) => {
   const { key, type } = component;
   let error;
@@ -35,7 +35,7 @@ const calculateError = (
             datagridComponent,
             rowData,
             rowErrors,
-            specialCharsWhitelist,
+            specialCharsWhitelist
           );
         }
         error.push(rowErrors);
@@ -51,7 +51,7 @@ const calculateError = (
         input,
         component,
         data,
-        specialCharsWhitelist,
+        specialCharsWhitelist
       );
       newErrors[key] = error;
   }

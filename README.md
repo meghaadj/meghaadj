@@ -16,7 +16,7 @@ Good Luck!
 
 ## Getting Started 🔥
 
-1.  Run `docker-compose up` - This may take a while the first time you run it. (350s for me)
+1.  Run `docker-compose up` - This may take a while the first time you run it. (430s for me)
 2.  Install the packages using Node 20 and start the react-app.
 3.  Access the user form in react-app using localhost:3004.
 4.  You can access the DB by using the details in docker-compose.yml file.

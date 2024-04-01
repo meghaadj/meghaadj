@@ -33,6 +33,8 @@ db.getCollection("forms").insertOne({
       key: "email",
       label: "Email",
       validate: {
+        custom:
+          'const emailRegex = /^[^@]+@([^@.]+\\.)+[^@.]+$/;\nif (emailRegex.test(input)) {\n  valid = true;\n} else {\n  valid = "Invalid Email";\n}',
         required: true,
       },
     },
@@ -40,14 +42,6 @@ db.getCollection("forms").insertOne({
       type: "textarea",
       key: "address",
       label: "Address",
-      validate: {
-        required: true,
-      },
-    },
-    {
-      type: "textfield",
-      key: "age",
-      label: "Age",
       validate: {
         required: true,
       },

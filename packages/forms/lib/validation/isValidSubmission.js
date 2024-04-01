@@ -5,7 +5,7 @@ const isValidSubmission = async (req, form, data) => {
 
   const specialCharsWhitelist = await getSettings(
     req,
-    "SPECIAL_CHARS_WHITELIST",
+    "SPECIAL_CHARS_WHITELIST"
   );
   const components = form.components || [];
 
@@ -24,7 +24,7 @@ const hasError = async (component, data, specialCharsWhitelist, req, form) => {
   switch (type) {
     case "panel":
       for (const panelComponent of component.components) {
-        if (await hasError(panelComponent, data, specialCharsWhitelist, req, form)) {
+        if (hasError(panelComponent, data, specialCharsWhitelist, req, form)) {
           return true;
         }
       }
@@ -39,7 +39,7 @@ const hasError = async (component, data, specialCharsWhitelist, req, form) => {
               rowData,
               specialCharsWhitelist,
               req,
-              form,
+              form
             )
           ) {
             return true;
@@ -60,7 +60,7 @@ const hasError = async (component, data, specialCharsWhitelist, req, form) => {
           data,
           specialCharsWhitelist,
           req,
-          form,
+          form
         )
       ) {
         return true;
@@ -76,7 +76,7 @@ const hasInvalidInput = async (
   data,
   specialCharsWhitelist,
   req,
-  form,
+  form
 ) => {
   const { key, validate, unique } = config;
   let valid = true;

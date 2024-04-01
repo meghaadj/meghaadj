@@ -9,7 +9,6 @@ db.getCollection("users").insertOne({
     lastName: "test user",
     email: "test-user@iwsaustralia.com.au",
     address: "150/40DE South Australia.",
-    age: 26,
     gender: "Male",
   },
   owner: ObjectId("641bde665badf30100610bf9"),

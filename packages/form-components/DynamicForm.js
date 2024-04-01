@@ -135,7 +135,7 @@ const DynamicForm = (props) => {
     components,
     data,
     token,
-    formJson,
+    formJson
   ) => {
     const validation = await validationFn(components, data, token, formJson);
 
@@ -158,7 +158,7 @@ const DynamicForm = (props) => {
       components,
       data,
       token,
-      formJson,
+      formJson
     );
     if (uniqueValidation) return;
     // Check multiple validation for form elements
@@ -168,7 +168,7 @@ const DynamicForm = (props) => {
       components,
       data,
       token,
-      formJson,
+      formJson
     );
     if (multipleValidation) return;
 
@@ -206,13 +206,13 @@ const DynamicForm = (props) => {
         response = await axios.put(
           submissionUrl,
           { data: data },
-          { headers: headers },
+          { headers: headers }
         );
       } else {
         response = await axios.post(
           submissionUrl,
           { data: data },
-          { headers: headers },
+          { headers: headers }
         );
       }
 

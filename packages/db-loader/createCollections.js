@@ -4,4 +4,5 @@
 
 db.createCollection("submissions");
 db.createCollection("users");
+db.createCollection("settings");
 db.createCollection("forms");
