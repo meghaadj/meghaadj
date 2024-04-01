@@ -1,12 +1,7 @@
 import axios from "axios";
 import mongoose from "mongoose";
 import { URL } from "url";
-
-import { hasAccess } from "../lib/auth/index.js";
-import { encryptPasswordFields } from "../lib/helper/index.js";
-import { getSettings } from "../lib/queries/index.js";
 import { isValidSubmission } from "../lib/validation/index.js";
-import determineUserRoles from "./determineUserRoles.js";
 import config from "../config.js";
 
 const createSubmissionById = async (req, res) => {
@@ -17,13 +12,11 @@ const createSubmissionById = async (req, res) => {
 
   const user = req.user || {};
   const now = new Date();
-  //TODO perform validation check
+
   const formStatus = await isValidSubmission(req, form, req.body.data);
   if (!formStatus) {
     return res.status(400).json({ error: "Invalid Submission Data" });
   }
-
-  await encryptPasswordFields(form, req.body.data);
 
   const collectionName = form.collectionName || "Submissions";
 
@@ -46,12 +39,8 @@ const createSubmissionById = async (req, res) => {
     deleted: null,
   });
 
-  if (collectionName === "Users") {
-    sub.roles = determineUserRoles(form, req.body.data);
-  }
   await sub.save();
 
-  const API_KEY = await getSettings(req, "API_KEY");
   const actions = form.actions.filter((e) => e.on.includes("create"));
 
   actions.forEach(async (action) => {
@@ -63,8 +52,6 @@ const createSubmissionById = async (req, res) => {
       await axios.post(url, sub, {
         headers: {
           "Content-Type": "application/json",
-          "x-jwt-token": req.header("x-jwt-token"),
-          "x-api-key": API_KEY,
         },
       });
     } catch (error) {
