@@ -29,3 +29,5 @@ Please do this if you are already comfortable with the technologies
 
 - Implement a checkbox in the User form which will represent if the user is blocked or not.
 - Add Sort and Filter functionality to the Users table using mobx.
+
+-- After completing the task, create a PR and let the HR know.
