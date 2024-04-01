@@ -21,12 +21,11 @@ Good Luck!
 3.  Access the user form in react-app using localhost:3004.
 4.  You can access the DB by using the details in docker-compose.yml file.
 5.  Create a View, Edit and Delete functionality for this form.
-6.  Render a table of Users to view in react-app. It should get the submissions from the database.
+6.  Render a table of Users to view in react-app. It should get the users from the database.
 
 ## Bonus Tasks ✨
 
 Please do this if you are already comfortable with the technologies
 
-- Style react-app using Material UI.
-- Implement a checkbox in the form which will represent if the user is blocked or not in the User form.
+- Implement a checkbox in the User form which will represent if the user is blocked or not.
 - Add Sort and Filter functionality to the Users table using mobx.
