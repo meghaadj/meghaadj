@@ -1,0 +1,11 @@
+{
+  "name": "tech-task",
+  "version": "1.0.0",
+  "description": "Please only spend an hour on this task.\r If you have any questions please reach out to the task setter.\r Good Luck!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
